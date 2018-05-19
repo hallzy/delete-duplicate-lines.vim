@@ -40,12 +40,27 @@ The plugin will also print a message saying how many lines were removed.
 Set this variable to a single character to denote what register to save the
 lines to.
 
-* If nothing is provided, they will be saved to register `d`
-* If the variable is set to an empty string, it won't be saved
-* If you enter more than one character, it will use the first character of the
-  string
-* Non-alpha characters are not allowed
+If nothing is provided, they will be saved to register `d`
 
 ```vim
 let g:delete_duplicate_lines#register = 'd'
+```
+
+If you do not want the data to be saved, set this variable to be either empty,
+or `_` (This is the black hole register of Vim).
+
+```vim
+let g:delete_duplicate_lines#register = '_'
+or
+let g:delete_duplicate_lines#register = ''
+or
+let g:delete_duplicate_lines#register = ' '
+```
+
+If you enter more than one character, it will use the first character of the
+string
+
+```vim
+" Uses register 'h'
+let g:delete_duplicate_lines#register = 'hello'
 ```
