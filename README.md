@@ -20,7 +20,7 @@ Plug 'hallzy/delete-duplicate-lines.vim'
 
 There is a visual and normal mode mapping you need to provide in your vimrc.
 
-Choose whatever mapping you want. I personally use `<leader>`.
+Choose whatever mapping you want. I personally use `<leader>d`.
 
 ```vim
 nmap <leader>d <Plug>DeleteDuplicateLines<cr>
@@ -51,9 +51,9 @@ or `_` (This is the black hole register of Vim).
 
 ```vim
 let g:delete_duplicate_lines#register = '_'
-or
+" or
 let g:delete_duplicate_lines#register = ''
-or
+" or
 let g:delete_duplicate_lines#register = ' '
 ```
 

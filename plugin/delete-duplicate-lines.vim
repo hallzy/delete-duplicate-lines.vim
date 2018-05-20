@@ -37,11 +37,12 @@ function! s:delete_duplicate_lines(mode)
   " Counter to count the number of lines deleted
   let l:c=0
 
+  " Set the '<,'> registers
   if a:mode ==? 'normal'
     " Select the current paragraph
     exe "normal! vip\<esc>"
   elseif a:mode ==? 'visual'
-    " Select the current paragraph
+    " Reselect the visual selection that the user just made
     exe "normal! gv\<esc>"
   else
     echoe "Argument '" . a:mode "' unknown."
@@ -55,8 +56,8 @@ function! s:delete_duplicate_lines(mode)
   " - Delete it and append the line to register D
   "   - If the count is at 0 it doesn't append, it just resets the register
   " - Increment a counter
-  silent '<,'>g/^/kl|
-        \ if search('^'.escape(getline('.'),'\.*[]^$/').'$','bW', line("'<"))|
+  silent '<,'>g/^/kl |
+        \ if search('^'.escape(getline('.'),'\.*[]^$/').'$','bW', line("'<")) |
         \   if l:c == 0 |
         \     exe "'ld " . s:register |
         \     let l:c=l:c+1 |
@@ -79,4 +80,6 @@ endfunction
 " Normal mode version will automatically remove duplicates from the current
 " paragraph
 nnoremap <Plug>DeleteDuplicateLines :call <SID>delete_duplicate_lines('normal')<cr>
+
+" Visual mode will remove duplicate lines that exist within the visual selection
 vnoremap <Plug>DeleteDuplicateLinesVisual <esc>:call <SID>delete_duplicate_lines('visual')<cr>
