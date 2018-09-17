@@ -116,7 +116,7 @@ function! s:delete_all_but(mode)
   let l:dict[l:curLineContent] = get(l:dict, l:curLineContent, 0) + 1
 
   " Initialize a counter
-  l:numDeleted = 0
+  let l:numDeleted = 0
 
   " Loop through all the keys in the dictionary
   for l:key in keys(l:dict)
