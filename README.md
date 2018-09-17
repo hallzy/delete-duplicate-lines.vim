@@ -23,12 +23,18 @@ There is a visual and normal mode mapping you need to provide in your vimrc.
 Choose whatever mapping you want. I personally use `<leader>d`.
 
 ```vim
+" Delete duplicated lines, leaving just one occurrence of each line
 nmap <leader>d <Plug>DeleteDuplicateLines<cr>
 vmap <leader>d <Plug>DeleteDuplicateLinesVisual<cr>
+
+" Only keep unique lines
+nmap <leader>D <Plug>DeleteAllButUnique<cr>
+vmap <leader>D <Plug>DeleteAllButUniqueVisual<cr>
 ```
 
 When you use the plugin, the lines that are deleted will be saved in register
-`d` for future reference. This can be changed with a configuration variable
+`d` for future reference (currently does not work for `deleteAllButUnique` or
+`deleteAllButUniqueVisual`). This can be changed with a configuration variable
 explained lower down in this file.
 
 The plugin will also print a message saying how many lines were removed.
